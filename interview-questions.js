@@ -27,4 +27,34 @@ console.log( maxProfit( [ 128, 97, 121, 123, 98, 97, 105 ] ) );
 
 
 
+var safeBreakage = function(array, value, start, end) {
+  var start = start === undefined ? 0 : start;
+  var end = end === undefined ? array.length : end;
+
+  if (start > end) {
+    return -1;
+  }
+
+  var index = Math.floor((start + end) / 2);
+  var item = array[index];
+
+  console.log(start, end);
+  if (item === value) {
+    return index;
+  } else if (item < value) {
+    array.splice(index, array.length);
+    for(var i = index + 1; i < array.length; i++)
+      if (array[i] === value) {
+        return array[i]
+      }
+  }
+}
+
+
+
+
+
+
+
+
 // Imagine you are looking for a book in a library with a Dewey Decimal index. How would you go about it? Can you express this process as a searching algorithm?
